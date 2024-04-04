@@ -1,8 +1,9 @@
 package com.likelion.lionshop.controller;
 
+import com.likelion.lionshop.dto.CreateUserRequestDto;
+import com.likelion.lionshop.dto.UpdateUserRequestDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j //로그 출력을 도와주는 어노테이션
 @RestController
@@ -12,27 +13,39 @@ public class UserController {
     // 1. 사용자를 생성하는 컨트롤러를 만듭니다.
     // 이때 log.info를 이용하여 사용자의 이름, 주소, ID, PW를 출력해줍니다. return 값은 "사용자 생성"입니다.
     //CreateUserRequestDto 클래스를 매개변수로 받습니다.
-    public String createUser() {
-        return "";
+    @PostMapping(value = "")
+    public String createUser(@RequestBody CreateUserRequestDto createUserRequestDto) {
+        log.info("name = {}",createUserRequestDto.getName());
+        log.info("address = {}", createUserRequestDto.getAddress());
+        log.info("ID = {}", createUserRequestDto.getId());
+        log.info("PW = {}", createUserRequestDto.getPassword());
+        return "사용자 생성";
     }
 
     // 2. 사용자를 조회하는 컨트롤러를 만듭니다.
     // 이때 log.info를 이용하여 사용자의 ID를 출력해줍니다. return 값은 "사용자 조회"입니다.
-    public String getUser() {
-        return "";
+    @GetMapping(value = "")
+    public String getUser(@RequestBody CreateUserRequestDto createUserRequestDto) {
+        log.info("ID = {}",createUserRequestDto.getId());
+        return "사용자 조회";
     }
 
     // 3. 사용자를 수정하는 컨트롤러를 만듭니다.
     // 이때 log.info를 이용를여 사용자의 이름, 주소를 출력해줍니다. return 값은 "사용자 수정"입니다.
     //UpdateUserRequestDto 클래스를 매개변수로 받습니다.
-    public String updateUser() {
-        return "";
+    @PutMapping(value = "")
+    public String updateUser(@RequestBody UpdateUserRequestDto updateUserRequestDto) {
+        log.info("name = {}", updateUserRequestDto.getName());
+        log.info("address = {}", updateUserRequestDto.getAddress());
+        return "사용자 수정";
     }
 
     // 4. 사용자를 삭제하는 컨트롤러를 만듭니다.
     // 이때 log.info 이용하여 사용자의 ID를 출력해줍니다. return 값은 "사용자 삭제"입니다.
-    public String deleteUser() {
-        return "";
+    @DeleteMapping(value = "")
+    public String deleteUser(@RequestBody CreateUserRequestDto createUserRequestDto) {
+        log.info("ID = {}", createUserRequestDto.getId());
+        return "사용자 삭제";
     }
 
 }
