@@ -15,6 +15,7 @@ public class OrderController {
     //CreateOrderRequestDto 클래스를 매개변수로 받습니다.
     @PostMapping(value = "")
     public String createOrder(@RequestBody CreateOrderRequestDto createOrderRequestDto){
+
         log.info("주문 생성하기");
         log.info("name = {}", createOrderRequestDto.getName());
         return "주문 생성하기";
@@ -22,24 +23,28 @@ public class OrderController {
 
 
     // 2. 주문을 가져오는 컨트롤러를 만듭니다. 이때 return 값은 "주문 가져오기"입니다.
-    @GetMapping(value = "")
-    public String getOrder() {
-        log.info("주문 가져오기");
+    @GetMapping(value = "/{orderId}")
+    public String getOrder(@PathVariable("orderId") Long id) {
+
+        log.info("상품의 ID : {}", id);
         return "주문 가져오기";
     }
 
     // 3. 주문을 수정하는 컨트롤러를 만듭니다. 이때 return 값은 "주문 수정하기"입니다.
     //UpdateOrderRequestDto 클래스를 매개변수로 받습니다.
-    @PutMapping(value = "")
-    public String updateOrder(@RequestBody UpdateOrderRequestDto updateOrderRequestDto) {
+    @PutMapping(value = "/{orderId}")
+    public String updateOrder(@PathVariable("orderId") Long id,
+                              @RequestBody UpdateOrderRequestDto updateOrderRequestDto) {
+
         log.info("주문 수정하기");
         log.info("quantity = {}", updateOrderRequestDto.getQuantity());
         return "주문 수정하기";
     }
 
     // 4. 주문을 삭제하는 컨트롤러를 만듭니다. 이때 return 값은 "주문 삭제하기"입니다.
-    @DeleteMapping(value = "")
-    public String deleteOrder() {
+    @DeleteMapping(value = "/{orderId}")
+    public String deleteOrder(@PathVariable("orderId") Long id) {
+
         log.info("주문 삭제하기");
         return "주문 삭제하기";
     }
