@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j //로그 출력을 도와주는 어노테이션
 @RestController
 @RequiredArgsConstructor
@@ -21,13 +23,9 @@ public class OrderController {
     // 1. 주문을 생성하는 컨트롤러를 만듭니다. 이때 return 값은 "주문 생성하기"입니다. -> 주문은 리스트 형태로 요청을 보내주세요!
     //CreateOrderRequestDto 클래스를 매개변수로 받습니다.
     @PostMapping(value = "")
-    public ResponseEntity<OrderResponseDto> createOrder(@RequestBody CreateOrderRequestDto createOrderRequestDto) {
-        OrderResponseDto orderResponseDto = orderService.createOrder(createOrderRequestDto);
-        log.info("주문이 생성되었습니다. 상품명: {}, 수량: {}, 가격: {}",
-                orderResponseDto.getName(),
-                orderResponseDto.getQuantity(),
-                orderResponseDto.getPrice());
-        return new ResponseEntity<>(orderResponseDto, HttpStatus.OK);
+    public ResponseEntity<List<OrderResponseDto>> createOrders(@RequestBody List<CreateOrderRequestDto> createOrderRequestDtos) { //List형태로 주문을 받을 수 있게 수정
+        List<OrderResponseDto> orderResponseDtos = orderService.createOrders(createOrderRequestDtos);
+        return new ResponseEntity<>(orderResponseDtos, HttpStatus.CREATED);
     }
 
 

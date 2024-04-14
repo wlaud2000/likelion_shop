@@ -21,7 +21,7 @@ public class OrderResponseDto {
     }
 
 
-    public static OrderResponseDto toDto(Order order) { // Entity -> DTO로 변환 정적 메소드 사용으로 객체 생성을 위해 별도의 인스턴스를 생성할 필요가 없음
+    public static OrderResponseDto from(Order order) { // Entity -> DTO로 변환 정적 메소드 사용으로 객체 생성을 위해 별도의 인스턴스를 생성할 필요가 없음, toDto에서 from으로 메소드 이름 변경
         return OrderResponseDto.builder()
                 .id(order.getId())
                 .name(order.getName())

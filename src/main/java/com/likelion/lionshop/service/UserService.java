@@ -21,7 +21,7 @@ public class UserService {
                 .address(createUserRequestDto.getAddress())
                 .build();
 
-        return UserResponseDto.toDto(createUser);
+        return UserResponseDto.from(createUser);
     }
 
     //사용자 조회
@@ -32,7 +32,7 @@ public class UserService {
                 .address("서울시 구로구")
                 .build();
 
-        return UserResponseDto.toDto(getUser);
+        return UserResponseDto.from(getUser);
     }
 
     //사용자 수정
@@ -44,7 +44,7 @@ public class UserService {
                 .address(updateUserRequestDto.getAddress())
                 .build();
 
-        return UserResponseDto.toDto(updateUser);
+        return UserResponseDto.from(updateUser);
     }
 
     //사용자 삭제

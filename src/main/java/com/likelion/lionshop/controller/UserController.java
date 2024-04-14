@@ -28,7 +28,7 @@ public class UserController {
                 userResponseDto.getUserId(),
                 userResponseDto.getName(),
                 userResponseDto.getAddress());
-        return new ResponseEntity<>(userResponseDto, HttpStatus.OK);
+        return new ResponseEntity<>(userResponseDto, HttpStatus.CREATED); //생성 성공시 Status Code 변경
     }
 
     // 2. 사용자를 조회하는 컨트롤러를 만듭니다.

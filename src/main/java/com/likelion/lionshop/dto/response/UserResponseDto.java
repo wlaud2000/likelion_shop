@@ -24,7 +24,7 @@ public class UserResponseDto {
     }
 
 
-    public static UserResponseDto toDto(User user) { //Entity -> DTO 변환 정적 메소드 사용으로 객체 생성을 위해 별도의 인스턴스를 생성할 필요가 없음
+    public static UserResponseDto from(User user) { //Entity -> DTO 변환 정적 메소드 사용으로 객체 생성을 위해 별도의 인스턴스를 생성할 필요가 없음, toDto에서 from으로 메소드 이름 변경
         return UserResponseDto.builder()
                 .userId(user.getUserId())
                 .name(user.getName())
