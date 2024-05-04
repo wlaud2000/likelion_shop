@@ -4,7 +4,7 @@ import com.likelion.lionshop.entity.User;
 import lombok.*;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class UserResponseDto {
 
     public String userId;
