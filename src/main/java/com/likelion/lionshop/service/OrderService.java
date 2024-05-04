@@ -5,16 +5,12 @@ import com.likelion.lionshop.dto.request.UpdateOrderRequestDto;
 import com.likelion.lionshop.dto.response.OrderResponseDto;
 import com.likelion.lionshop.entity.Order;
 import com.likelion.lionshop.repository.OrderRepository;
-import com.likelion.lionshop.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -84,12 +80,12 @@ public class OrderService {
     //주문 삭제하기
     public void deleteOrder(Long id) {
 
-        // ID로 주문을 조회
-        Order order = orderRepository.findById(id).orElseThrow(() ->
-                new RuntimeException("주문을 찾을 수 없습니다. ID: " + id));
+//        // ID로 주문을 조회
+//        Order order = orderRepository.findById(id).orElseThrow(() ->
+//                new RuntimeException("주문을 찾을 수 없습니다. ID: " + id));
 
-        // 조회한 주문을 삭제
-        orderRepository.delete(order);
+        //주문을 삭제
+        orderRepository.deleteById(id);
         log.info("[ Order Service ] 주문이 삭제되었습니다. ID ---> {}", id);
     }
 }
