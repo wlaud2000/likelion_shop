@@ -4,7 +4,7 @@ import com.likelion.lionshop.entity.Order;
 import lombok.*;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class OrderResponseDto {
 
     private Long id;
