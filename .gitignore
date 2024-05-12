@@ -1,6 +1,7 @@
 HELP.md
 
 *.yml
+application.yml
 
 .gradle
 build/
