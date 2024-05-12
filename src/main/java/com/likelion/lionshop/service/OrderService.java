@@ -79,13 +79,13 @@ public class OrderService {
 
     //주문 삭제하기
     public void deleteOrder(Long id) {
-
-//        // ID로 주문을 조회
-//        Order order = orderRepository.findById(id).orElseThrow(() ->
-//                new RuntimeException("주문을 찾을 수 없습니다. ID: " + id));
-
         //주문을 삭제
-        orderRepository.deleteById(id);
-        log.info("[ Order Service ] 주문이 삭제되었습니다. ID ---> {}", id);
+        try {
+            orderRepository.deleteById(id);
+            log.info("[ Order Service ] 주문이 삭제되었습니다. ID ---> {}", id);
+
+        } catch (IllegalArgumentException exception) {
+            log.error("Invalid Parameter", exception);
+        }
     }
 }
