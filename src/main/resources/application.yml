@@ -1,9 +1,9 @@
 spring:
   datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/like_lion_member?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: root
-    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://like-lion.cfu6uk8ioxfv.ap-northeast-2.rds.amazonaws.com:3306/lionshop?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: admin
+    password: kkm99494933
 
   jpa:
     database: mysql
