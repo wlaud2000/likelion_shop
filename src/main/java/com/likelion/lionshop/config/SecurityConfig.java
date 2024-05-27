@@ -30,7 +30,10 @@ public class SecurityConfig {
             "/login", //로그인은 인증이 필요하지 않음
             "/user/create", //회원가입은 인증이 필요하지 않음
             "/auth/reissue", //토큰 재발급은 인증이 필요하지 않음
-            "/auth/**"
+            "/auth/**",
+            "api/usage",
+            "/swagger-ui/**",
+            "v3/api-docs/**"
     };
 
     @Bean
@@ -73,6 +76,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         //위에서 정의했던 allowedUrls 들은 인증이 필요하지 않음 -> permitAll
                         .requestMatchers(allowedUrls).permitAll()
+                        .requestMatchers("/admin/users").hasAuthority("ADMIN") // ADMIN 역할이 필요한 경로 설정
                         .anyRequest().authenticated() // 그 외의 url 들은 인증이 필요함
                 );
 
